@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientRest {
 
     @Autowired
@@ -24,13 +25,8 @@ public class ClientRest {
         else return clientRepository.jibhom();
     }
 
-    @PostMapping(value = "/Client")
-    public List<Client> Clients(){
-        return clientRepository.findAll();
 
-    }
-
-    @GetMapping(value = "/create-client/{name}")
+    @PostMapping(value = "/create-client/{name}")
     public void createClient(@PathVariable(value = "name") String name){
         Client client=new Client(name);
 
